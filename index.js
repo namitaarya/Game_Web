@@ -42,7 +42,8 @@ app.post("/signup", (req, res) => {
 });
 
 app.post("/signin", async (req, res) => {
-  try {
+  try 
+  {
     const email1 = req.body.email;
     const password1 = req.body.password;
     const userEmail = await db.collection("players").findOne({ email: email1 });
@@ -60,20 +61,17 @@ app.post("/signin", async (req, res) => {
     {
       console.log(userEmail.password);
       console.log("invalid user");
+      res.redirect("SignInFailed.html");
       shouldPlay = false;
     }
-
-    if (shouldPlay === true) {
-      app.get("/game", (req, res) => {
-        return res.redirect("game.html");
-      });
-    } else {
-      console.log("nonono");
-    }
-  } catch (error) {
+  } 
+  
+  catch (error) 
+  {
     console.log(error);
     res.status(404).send("Invalid Email ID");
   }
+
 });
 
 app.get("/signup", (req, res) => {
@@ -84,9 +82,12 @@ app.get("/game",(req,res)=>{
   return res.redirect("game.html");
 })
 
+app.get("/SignInFailed",(req,res)=>{
+  return res.redirect("SignInFailed.html");
+})
 app
   .get("/", function (req, res) {
-    res.sendFile("D:/dsproject/public/main.html");
+    res.sendFile("D:/dsproject/public/index.html");
   })
   .listen(3000);
 

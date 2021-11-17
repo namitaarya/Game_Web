@@ -29,20 +29,20 @@ form{
 }
 
 #Welcome{
-    animation: fadein 2s;
+    animation: fadein 1s;
     animation-fill-mode: forwards;
 }
 
 #Welcome2{
     animation: fadein 2s;
-    animation-delay: 2s;
+    animation-delay: 1s;
     animation-fill-mode: forwards;
    
 }
 
 form{
     animation: fadein 2s;
-    animation-delay:6s;
+    animation-delay:3s;
     animation-fill-mode: forwards;
 
 
