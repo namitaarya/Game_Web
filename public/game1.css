@@ -111,19 +111,18 @@ button, .key {
     background-color: rgb(3, 2, 2);
     border-radius: 0.5rem;
     margin: 0rem 0rem;
-    width: 15rem;
-    height: 15rem;
+    width: 20rem;
+    height: 20rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     align-items: center;
-    left: 200;
     opacity: 1;
     position: absolute;
-    right: 100;
+    right: 40%;
     text-align: center;
-    top: 100;
+    top: 200%;
     transform: translateX(0);
     text-transform: uppercase;
   /*   box-shadow: 0 1.5rem 0 0.5rem PaleVioletRed; */
@@ -134,7 +133,7 @@ button, .key {
     text-align: center;
     color: white;
     font-family: 'Press Start 2P', cursive;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     padding: 0.6rem 0;
   }
 

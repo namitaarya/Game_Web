@@ -7,6 +7,10 @@ const dialogue = document.querySelector('.dialogue');
 const startBtn = document.querySelector(".start-button");
 const hud = document.querySelector('.hud');
 const scoreNode = document.querySelector('.hud__score span');
+const highscoreNode = document.querySelector('.highscore span');
+
+// maintaining highscore of the user
+
 
 let ship,
     lasers = [],
@@ -16,9 +20,12 @@ let ship,
     speedMultiplier,
     enemySeedFrameInterval,
     score = 0,
+    highscore = 0,
     tick = 0,
     laserTick = 0;
 
+
+// popup menu in the game
 var menuPopup = document.querySelector('.popup')
 document.querySelector('.menu-button').addEventListener('click', function () {
   menuPopup.classList.toggle('visible')
@@ -32,7 +39,8 @@ function randomBetween(min, max) {
 
 // calculate the player's score
 function calcScore(x) {
-  return Math.floor(1 / x * 500);
+  //return Math.floor(1 / x * 500);
+  return (1 / x * 500);
 }
 
 // shooter
@@ -78,7 +86,8 @@ Ship.prototype.draw = function () {
 
 Ship.prototype.onKeyDown = function (e) {
   if (ship.active) {
-    if (e.keyCode === 39) this.right = true;else if (e.keyCode === 37) this.left = true;
+    if (e.keyCode === 39) this.right = true;
+    else if (e.keyCode === 37) this.left = true;
 
     if (e.keyCode == 32 && !this.shooting) {
       this.shooting = true;
@@ -88,7 +97,9 @@ Ship.prototype.onKeyDown = function (e) {
 };
 
 Ship.prototype.onKeyUp = function (e) {
-  if (e.key === 'ArrowRight') this.right = false;else if (e.key === 'ArrowLeft') this.left = false;else if (e.keyCode == 32) this.shooting = false;
+  if (e.key === 'ArrowRight') this.right = false;
+  else if (e.key === 'ArrowLeft') this.left = false;
+  else if (e.keyCode == 32) this.shooting = false;
 };
 
 function Laser(options) {
@@ -175,6 +186,11 @@ function handleLaserCollision() {
 
         score += calcScore(enemy.radius);
         scoreNode.textContent = score;
+
+        if(highscore < score) {
+          highscore = score;
+          highscoreNode.textContent = highscore;
+        }
       }
     }
   }
@@ -195,6 +211,7 @@ function handleShipCollision() {
           enemySeedFrameInterval = 100;
           score = 0;
           scoreNode.textContent = score;
+          highscoreNode.textContent = highscore;
         }, 2000);
       }
     }
@@ -318,12 +335,8 @@ function onResize() {
   stage.height = window.innerHeight;
 }
 
-function popUp() {
-
-}
-
 startBtn.addEventListener('click', startGame);
-menuPopup.addEventListener('click', popUp);
+//menuPopup.addEventListener('click', popUp);
 window.addEventListener('resize', onResize);
 document.body.appendChild(stage);
 onResize(); // start the ship off-screen:
