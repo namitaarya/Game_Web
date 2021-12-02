@@ -116,16 +116,13 @@ button, .key {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    align-items: center;
     opacity: 1;
-    position: absolute;
-    right: 40%;
-    text-align: center;
-    top: 200%;
-    transform: translateX(0);
     text-transform: uppercase;
-  /*   box-shadow: 0 1.5rem 0 0.5rem PaleVioletRed; */
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .menu {
@@ -144,4 +141,13 @@ button, .key {
 
   .visible {
     visibility: hidden;
+  }
+
+  .options {
+    background-color: black;
+    border-color: black;
+    color: white;
+
+    width: 70%;
+    align-self:center;
   }

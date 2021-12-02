@@ -26,10 +26,10 @@ let ship,
 
 
 // popup menu in the game
+var menuPopupActive = false;
 var menuPopup = document.querySelector('.popup')
 document.querySelector('.menu-button').addEventListener('click', function () {
-  menuPopup.classList.toggle('visible')
-  menuTriangle.classList.toggle('visible')
+  menuPopup.classList.toggle('visible');
 }, false)
 
 // random place of the falling circles
@@ -39,8 +39,7 @@ function randomBetween(min, max) {
 
 // calculate the player's score
 function calcScore(x) {
-  //return Math.floor(1 / x * 500);
-  return (1 / x * 500);
+  return Math.floor(1 / x * 500);
 }
 
 // shooter
